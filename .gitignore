@@ -1,0 +1,12 @@
+node_modules/
+.expo/
+dist/
+dist-android/
+android/
+ios/
+*.apk
+*.aab
+.env.local
+test-results/
+playwright-report/
+tools/

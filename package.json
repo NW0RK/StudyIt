@@ -1,0 +1,41 @@
+{
+  "name": "studyit",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "web": "expo start --web",
+    "android": "expo run:android",
+    "content:build": "tsx scripts/build-content.ts",
+    "content:validate": "tsx scripts/build-content.ts --check",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "build:web": "npm run content:build && expo export --platform web && node scripts/finish-web.mjs",
+    "build:android": "expo run:android --variant release",
+    "check": "npm run typecheck && npm test && npm run content:validate"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~6.1.2",
+    "@expo/vector-icons": "^15.0.3",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "expo": "~54.0.0",
+    "katex": "^0.16.22",
+    "markdown-it": "^14.1.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-web": "^0.21.0",
+    "react-native-webview": "13.15.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/katex": "^0.16.7",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^24.0.0",
+    "@types/react": "~19.1.10",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.2"
+  }
+}
