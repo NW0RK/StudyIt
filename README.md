@@ -2,6 +2,14 @@
 
 A Reddit-inspired app for learning through AI-written discussions. Android and the GitHub Pages website read one public content library. Reading activity stays on each device.
 
+## Use StudyIt
+
+- [Open the website](https://nw0rk.github.io/StudyIt/)
+- [Download the Android preview](https://github.com/NW0RK/StudyIt/releases/tag/v1.0.0-preview.1)
+- [Give these instructions to your AI agent](docs/AGENT_INSTRUCTIONS.md)
+
+Desktop uses a compact Reddit-style layout, including collapsible navigation and a discussion sidebar. Mobile keeps its own reading layout. Use the theme button to switch between light and dark.
+
 ## Develop and verify
 
 Requires Node.js 22 LTS or newer and npm.
