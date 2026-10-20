@@ -22,6 +22,9 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
       - run: npm ci
       - run: npm run content:build && npm run check
       - name: Configure shared library
@@ -44,6 +47,8 @@ jobs:
         with:
           name: StudyIt-Android-preview
           path: android/app/build/outputs/apk/release/*.apk
+      - name: Enable emulator acceleration
+        run: sudo chmod a+rw /dev/kvm
       - name: Verify APK on Android emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
