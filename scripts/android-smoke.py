@@ -77,6 +77,23 @@ try:
     find('Search discussions')
     find('Home feed')
     screenshot('home')
+    tap(find('Open communities'))
+    find('YOUR COMMUNITIES')
+    screenshot('communities')
+    tap(find('Open Mathematics community'))
+    find('s/mathematics')
+    find('Joined')
+    screenshot('community')
+    adb('shell', 'input', 'keyevent', 'KEYCODE_BACK')
+    find('Search discussions')
+    root = tree()
+    switch_to_light = any('Switch to light theme' in node.attrib.get('content-desc', '') for node in root.iter('node'))
+    first_theme = 'Switch to light theme' if switch_to_light else 'Switch to dark theme'
+    second_theme = 'Switch to dark theme' if switch_to_light else 'Switch to light theme'
+    tap(find(first_theme))
+    find(second_theme)
+    screenshot('alternate-theme')
+    tap(find(second_theme))
     bookmark = find('Save I understand slopes.', scroll=True, alternatives=('Unsave I understand slopes.',))
     if bookmark.attrib.get('content-desc', '').startswith('Save '):
         tap(bookmark)
@@ -85,6 +102,9 @@ try:
     find('Follow the conversation', scroll=True)
     find('Collapse reply by Maya', scroll=True)
     screenshot('discussion')
+    tap(find('Collapse reply by Maya'))
+    find('Reply collapsed')
+    tap(find('Expand reply by Maya'))
     find('dividing by zero', scroll=True)
     find('instantaneous speed', scroll=True)
     screenshot('nested-math-reply')
@@ -110,7 +130,7 @@ try:
         file.write(logs)
     assert 'FATAL EXCEPTION' not in logs, 'Android process crashed'
     assert 'JavascriptException' not in logs, 'JavaScript runtime crashed'
-    print('Android smoke passed: launch, thread, nested math replies, bookmark, persisted saved collection, shared library refresh' + (', and physical device verification.' if PHYSICAL else ', and offline reading.'))
+    print('Android smoke passed: launch, community drawer, community navigation, hardware back, both themes, thread, branch collapse, nested math replies, bookmark, persisted saved collection, shared library refresh' + (', and physical device verification.' if PHYSICAL else ', and offline reading.'))
 except Exception:
     screenshot('failure')
     with open(OUT + '/logcat.txt', 'w', encoding='utf-8') as file:
