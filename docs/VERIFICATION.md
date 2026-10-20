@@ -2,7 +2,20 @@
 
 Verified on October 21, 2026 (Asia/Tbilisi).
 
-## Release evidence
+## Android 1.0.1 visual refresh
+
+Reference screenshots were captured from the Reddit Android app on the Galaxy A52: home feed, discussion header, and nested comments. They remain local in `test-results/reddit-reference/`; no Reddit content or account data is included in the application or repository.
+
+The refresh implements a rounded search header, charcoal and white themes, a community drawer, full-width feed rows, circular community/persona icons, outlined action pills, icon navigation, compact thread surfaces, and Android back-button handling. A physical screenshot review caught clipped search text; explicit native input height and padding corrected its alignment in application revision `801fd03`.
+
+The physical-device suite additionally covers drawer navigation, opening a joined community, returning with Android Back, switching both themes, searching for recursion, collapsing and expanding a reply, mathematics, bookmarks, and saved-discussion persistence across restart. Existing saved content survived the update.
+
+- The layout refresh was verified on emulator and Galaxy A52 at revision `801fd03` before generated profile pictures were added: [build and expanded emulator verification](https://github.com/NW0RK/StudyIt/actions/runs/39495019076).
+- Profile pictures share one deterministic drawing recipe across Android, the website, and the SVG export script. The current library exports 14 distinct characters; 21 tests pass, including avatar stability, background variation, and treating untrusted names only as seeds.
+
+See [Android design notes](ANDROID_DESIGN.md) for the reference-to-implementation details.
+
+## Original 1.0 release evidence
 
 - [Website deployment](https://github.com/NW0RK/StudyIt/actions/runs/39489892363): successful production export and GitHub Pages deployment.
 - [Android build and emulator verification](https://github.com/NW0RK/StudyIt/actions/runs/39489894673): standalone APK built from application revision `3232ce5`; build and verification jobs both passed.

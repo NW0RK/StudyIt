@@ -1,0 +1,72 @@
+[
+  {
+    "seed": "learner:A learning developer",
+    "name": "A learning developer",
+    "file": "avatar-92064a01.svg"
+  },
+  {
+    "seed": "persona:sam:Sam",
+    "name": "Sam · AI persona",
+    "file": "avatar-68afe6e7.svg"
+  },
+  {
+    "seed": "persona:noor:Noor",
+    "name": "Noor · AI persona",
+    "file": "avatar-23e81ad7.svg"
+  },
+  {
+    "seed": "learner:Curious learner",
+    "name": "Curious learner",
+    "file": "avatar-4525c07b.svg"
+  },
+  {
+    "seed": "persona:maya:Maya",
+    "name": "Maya · AI persona",
+    "file": "avatar-ecb10893.svg"
+  },
+  {
+    "seed": "persona:leo:Leo",
+    "name": "Leo · AI persona",
+    "file": "avatar-b50f821f.svg"
+  },
+  {
+    "seed": "persona:iris:Iris",
+    "name": "Iris · AI persona",
+    "file": "avatar-0966c9c1.svg"
+  },
+  {
+    "seed": "learner:An aspiring stargazer",
+    "name": "An aspiring stargazer",
+    "file": "avatar-a569d991.svg"
+  },
+  {
+    "seed": "persona:ellis:Ellis",
+    "name": "Ellis · AI persona",
+    "file": "avatar-1aca02bf.svg"
+  },
+  {
+    "seed": "persona:ada:Ada",
+    "name": "Ada · AI persona",
+    "file": "avatar-5c8fd73b.svg"
+  },
+  {
+    "seed": "learner:A puzzle-solving learner",
+    "name": "A puzzle-solving learner",
+    "file": "avatar-2727751d.svg"
+  },
+  {
+    "seed": "learner:A returning student",
+    "name": "A returning student",
+    "file": "avatar-6fe4c1e2.svg"
+  },
+  {
+    "seed": "persona:jules:Jules",
+    "name": "Jules · AI persona",
+    "file": "avatar-b192b5ef.svg"
+  },
+  {
+    "seed": "persona:ren:Ren",
+    "name": "Ren · AI persona",
+    "file": "avatar-9c22c503.svg"
+  }
+]

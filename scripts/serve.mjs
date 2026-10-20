@@ -4,7 +4,7 @@ import path from 'node:path';
 const root = path.resolve(process.env.STUDYIT_PREVIEW_ROOT || 'dist');
 const port = Number(process.env.PORT || 4173);
 const prefix = process.env.STUDYIT_BASE_PATH || '';
-const types = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.ttf': 'font/ttf', '.png': 'image/png', '.css': 'text/css' };
+const types = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.ttf': 'font/ttf', '.png': 'image/png', '.css': 'text/css', '.svg': 'image/svg+xml' };
 http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, 'http://localhost');
