@@ -1,7 +1,7 @@
 import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
-const root = path.resolve('dist');
+const root = path.resolve(process.env.STUDYIT_PREVIEW_ROOT || 'dist');
 const port = Number(process.env.PORT || 4173);
 const prefix = process.env.STUDYIT_BASE_PATH || '';
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.ttf': 'font/ttf', '.png': 'image/png', '.css': 'text/css' };
