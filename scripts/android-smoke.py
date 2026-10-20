@@ -31,7 +31,10 @@ def tree():
     return ET.fromstring(raw)
 
 def find(phrase, scroll=False, attempts=5, alternatives=()):
-    for attempt in range(10 if scroll else attempts):
+    previous = None
+    direction = 1
+    reversed_once = False
+    for attempt in range(24 if scroll else attempts):
         root = tree()
         for node in root.iter('node'):
             if any(term in node.attrib.get('text', '') or term in node.attrib.get('content-desc', '') for term in (phrase, *alternatives)):
@@ -39,7 +42,15 @@ def find(phrase, scroll=False, attempts=5, alternatives=()):
                 if len(bounds) == 4 and bounds[2] > bounds[0] and bounds[3] > bounds[1]:
                     return node
         if scroll:
-            adb('shell', 'input', 'swipe', '540', '1700', '540', '650', '400')
+            # Short overlapping steps keep small lines between math blocks visible.
+            # If WebView resizing moved past the target, scan back from the end.
+            signature = ET.tostring(root)
+            if signature == previous and not reversed_once:
+                direction = -1
+                reversed_once = True
+            previous = signature
+            start, end = ('1600', '1050') if direction == 1 else ('1050', '1600')
+            adb('shell', 'input', 'swipe', '540', start, '540', end, '350')
         time.sleep(1)
     raise AssertionError('Android UI did not show: ' + phrase)
 
@@ -105,6 +116,7 @@ try:
         tap(bookmark)
     tap(find('Read I understand slopes.', scroll=True))
     find('Fictional learner')
+    screenshot('question')
     find('Follow the conversation', scroll=True)
     find('Collapse reply by Maya', scroll=True)
     screenshot('discussion')

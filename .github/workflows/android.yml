@@ -6,10 +6,16 @@ on:
         description: 'Published library URL; leave blank for the default GitHub Pages URL'
         required: false
         type: string
+      apk_run_id:
+        description: 'Optional existing successful APK run ID; verify that APK without rebuilding'
+        required: false
+        type: string
 permissions:
   contents: read
+  actions: read
 jobs:
   apk:
+    if: ${{ inputs.apk_run_id == '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -54,6 +60,7 @@ jobs:
           path: android/app/build/outputs/apk/release/*.apk
   verify:
     needs: apk
+    if: ${{ always() && (needs.apk.result == 'success' || (needs.apk.result == 'skipped' && inputs.apk_run_id != '')) }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -69,6 +76,8 @@ jobs:
         with:
           name: StudyIt-Android-preview
           path: android/app/build/outputs/apk/release
+          run-id: ${{ inputs.apk_run_id || github.run_id }}
+          github-token: ${{ github.token }}
       - name: Enable emulator acceleration
         run: sudo chmod a+rw /dev/kvm
       - name: Verify APK on Android emulator

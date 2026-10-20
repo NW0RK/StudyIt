@@ -12,6 +12,11 @@ The physical-device suite additionally covers drawer navigation, opening a joine
 
 - The layout refresh was verified on emulator and Galaxy A52 at revision `801fd03` before generated profile pictures were added: [build and expanded emulator verification](https://github.com/NW0RK/StudyIt/actions/runs/39495019076).
 - Profile pictures share one deterministic drawing recipe across Android, the website, and the SVG export script. The current library exports 14 distinct characters; 21 tests pass, including avatar stability, background variation, and treating untrusted names only as seeds.
+- Avatar-enabled APK application revision: `be12c0f`.
+- [Avatar-enabled Android build and emulator verification](https://github.com/NW0RK/StudyIt/actions/runs/39496737839).
+- [Website build and deployment with generated avatars](https://github.com/NW0RK/StudyIt/actions/runs/39496736979).
+- APK SHA-256: `43ecee2bf0d57d4de72756f3e1629f86f40365ec49c2cc78be38df1133352e19`.
+- Galaxy A52 screenshots and device log: local `test-results/galaxy-a52-avatars/`.
 
 See [Android design notes](ANDROID_DESIGN.md) for the reference-to-implementation details.
 
