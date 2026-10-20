@@ -52,6 +52,23 @@ jobs:
         with:
           name: StudyIt-Android-preview
           path: android/app/build/outputs/apk/release/*.apk
+  verify:
+    needs: apk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: StudyIt-Android-preview
+          path: android/app/build/outputs/apk/release
       - name: Enable emulator acceleration
         run: sudo chmod a+rw /dev/kvm
       - name: Verify APK on Android emulator
