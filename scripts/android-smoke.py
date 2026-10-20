@@ -19,8 +19,8 @@ def tree():
         file.write(raw)
     return ET.fromstring(raw)
 
-def find(phrase, scroll=False):
-    for attempt in range(10 if scroll else 5):
+def find(phrase, scroll=False, attempts=5):
+    for attempt in range(10 if scroll else attempts):
         root = tree()
         for node in root.iter('node'):
             if phrase in node.attrib.get('text', '') or phrase in node.attrib.get('content-desc', ''):
@@ -61,12 +61,22 @@ try:
     find('I understand slopes.')
     find('Library checked', scroll=True)
     screenshot('saved-after-restart')
+    adb('shell', 'cmd', 'connectivity', 'airplane-mode', 'enable')
+    adb('shell', 'am', 'force-stop', 'app.studyit.reader')
+    adb('shell', 'am', 'start', '-n', 'app.studyit.reader/.MainActivity')
+    find('Your available discussions are still here.', attempts=15)
+    tap(find('Saved discussions'))
+    tap(find('Read I understand slopes.'))
+    find('Fictional learner')
+    find('Collapse reply by Maya', scroll=True)
+    screenshot('offline-reading')
+    adb('shell', 'cmd', 'connectivity', 'airplane-mode', 'disable')
     logs = adb('logcat', '-d')
     with open(OUT + '/logcat.txt', 'w') as file:
         file.write(logs)
     assert 'FATAL EXCEPTION' not in logs, 'Android process crashed'
     assert 'JavascriptException' not in logs, 'JavaScript runtime crashed'
-    print('Android smoke passed: launch, thread, replies, bookmark, persisted saved collection.')
+    print('Android smoke passed: launch, thread, nested math replies, bookmark, persisted saved collection, shared library refresh, and offline reading.')
 except Exception:
     screenshot('failure')
     with open(OUT + '/logcat.txt', 'w') as file:
