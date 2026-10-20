@@ -88,7 +88,7 @@ function StudyIt() {
   }, [route.page, route.id, ready, discussion?.id]);
   const navItems: { page: Route['page']; label: string; icon: IconName }[] = [{ page: 'home', label: 'Home feed', icon: 'home-outline' }, { page: 'explore', label: 'Explore subjects', icon: 'compass-outline' }, { page: 'saved', label: 'Saved discussions', icon: 'bookmark-outline' }];
   const navLink = (item: typeof navItems[number]) => <Pressable key={item.page} accessibilityRole="button" onPress={() => navigate({ page: item.page })} style={({ pressed }) => [s.navLink, { backgroundColor: route.page === item.page ? p.tint : pressed ? p.soft : 'transparent' }]}><Icon name={item.icon} color={route.page === item.page ? p.green : p.muted} /><Text style={{ color: route.page === item.page ? p.green : p.muted, fontWeight: route.page === item.page ? '700' : '500', fontSize: 14 }}>{item.label}</Text>{item.page === 'saved' && prefs.saved.length > 0 && <Text style={{ marginLeft: 'auto', color: p.muted, fontSize: 12 }}>{prefs.saved.length}</Text>}</Pressable>;
-  let filtered = selectDiscussions(library.discussions, query, route.page === 'subject' ? route.id || null : null);
+  let filtered = selectDiscussions(library.discussions, query, route.page === 'subject' ? route.id || null : null, subjects);
   if (route.page === 'home') filtered = filtered.filter(d => prefs.followed.includes(d.subjectId));
   if (route.page === 'saved') filtered = filtered.filter(d => prefs.saved.includes(d.id));
   if (filter === 'unread') filtered = filtered.filter(d => !prefs.read.includes(d.id));

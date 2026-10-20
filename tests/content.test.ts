@@ -48,6 +48,7 @@ test('search includes reply bodies and learner context, filters subjects, and so
   const other = JSON.parse(readFileSync('content/discussions/orbits-and-falling.json', 'utf8'));
   assert.equal(selectDiscussions([example, other], 'speedometer', null)[0].id, example.id);
   assert.equal(selectDiscussions([example], 'algebra', null).length, 1);
+  assert.equal(selectDiscussions([example], 'Mathematics', null, subjects).length, 1);
   assert.equal(selectDiscussions([example], 'speedometer', 'physics').length, 0);
   assert.equal(selectDiscussions([example, other], '', null)[0].id, other.id);
 });

@@ -55,7 +55,7 @@ export function parseUpload(raw: string, subjects: Subject[]): Upload {
 }
 export const catalogSchema = z.object({ schemaVersion: z.literal(1), version: z.string(), subjects: z.array(subjectSchema), discussions: z.array(z.object({ id, revision: z.string(), title: z.string(), subjectId: id, tags: z.array(z.string()), difficulty: z.enum(['Beginner','Intermediate','Advanced']), publishedAt: z.iso.datetime(), updatedAt: z.iso.datetime(), searchText: z.string() })) });
 export type Catalog = z.infer<typeof catalogSchema>;
-export function selectDiscussions(discussions: Discussion[], query: string, subject: string | null) {
+export function selectDiscussions(discussions: Discussion[], query: string, subject: string | null, subjects: Subject[] = []) {
   const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-  return discussions.filter(d => (!subject || d.subjectId === subject) && terms.every(t => `${d.title} ${d.tags.join(' ')} ${d.question.body} ${d.question.priorKnowledge} ${d.question.interests} ${d.replies.map(r => r.body).join(' ')}`.toLowerCase().includes(t))).sort((a,b) => b.publishedAt.localeCompare(a.publishedAt) || a.id.localeCompare(b.id));
+  return discussions.filter(d => (!subject || d.subjectId === subject) && terms.every(t => `${subjects.find(s => s.id === d.subjectId)?.name || d.subjectId} ${d.title} ${d.tags.join(' ')} ${d.question.body} ${d.question.priorKnowledge} ${d.question.interests} ${d.replies.map(r => r.body).join(' ')}`.toLowerCase().includes(t))).sort((a,b) => b.publishedAt.localeCompare(a.publishedAt) || a.id.localeCompare(b.id));
 }
