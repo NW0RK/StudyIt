@@ -26,6 +26,10 @@ jobs:
           packages: platform-tools
           log-accepted-android-sdk-licenses: false
       - run: npm ci
+      - name: Verify Expo native dependency compatibility
+        run: npx expo install --check
+        env:
+          EXPO_OFFLINE: '1'
       - run: npm run content:build && npm run check
       - name: Configure shared library
         shell: bash
@@ -40,6 +44,7 @@ jobs:
             echo "EXPO_PUBLIC_LIBRARY_URL=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/library" >> "$GITHUB_ENV"
           fi
       - run: npx expo prebuild --platform android --no-install
+      - uses: gradle/actions/setup-gradle@v4
       - name: Build standalone preview APK
         working-directory: android
         run: ./gradlew assembleRelease --no-daemon -PreactNativeArchitectures=arm64-v8a,x86_64

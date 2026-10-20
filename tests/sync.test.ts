@@ -18,7 +18,7 @@ test('changed content replaces the same ID; removed content disappears after suc
   const changed = { ...before.discussions[0], title: 'Updated title' };
   const after = await syncLibrary(before, 'https://example.com/library', async url => url.includes('catalog') ? next : changed, async () => {});
   assert.equal(after.discussions.length, 1); assert.equal(after.discussions[0].id, before.discussions[0].id); assert.equal(after.discussions[0].title, 'Updated title');
-  assert.equal(before.discussions.length, 4);
+  assert.equal(before.discussions.length, seed.discussions.length);
 });
 test('failed or malformed refresh never persists a partial library', async () => {
   const before = current(); const next = structuredClone(before.catalog); next.discussions[0].revision = 'new';
@@ -33,4 +33,8 @@ test('discussion/catalog identity mismatch and duplicate catalog IDs are rejecte
   await assert.rejects(syncLibrary(before, 'https://example.com/library', async url => url.includes('catalog') ? next : { ...before.discussions[0], id: 'wrong-id' }, async () => {}), /does not match/);
   next.discussions.push(next.discussions[0]);
   await assert.rejects(syncLibrary(before, 'https://example.com/library', async () => next, async () => {}), /duplicate/);
+});
+test('an unknown community is rejected even when discussion revisions are cached', async () => {
+  const before = current(); const next = structuredClone(before.catalog); next.subjects = [];
+  await assert.rejects(syncLibrary(before, 'https://example.com/library', async () => next, async () => {}), /unknown subject/);
 });

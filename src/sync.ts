@@ -3,6 +3,7 @@ export type Library = { catalog: Catalog; discussions: Discussion[]; lastUpdated
 export async function syncLibrary(current: Library, base: string, getJson: (url: string) => Promise<unknown>, persist: (next: Library) => Promise<void>): Promise<Library> {
   const catalog = catalogSchema.parse(await getJson(`${base}/catalog.json?t=${Date.now()}`));
   if (new Set(catalog.subjects.map(s => s.id)).size !== catalog.subjects.length || new Set(catalog.discussions.map(d => d.id)).size !== catalog.discussions.length) throw new Error('The published catalog contains duplicate IDs.');
+  if (catalog.discussions.some(entry => !catalog.subjects.some(subject => subject.id === entry.subjectId))) throw new Error('The published catalog references an unknown subject.');
   const discussions: Discussion[] = [];
   for (let i = 0; i < catalog.discussions.length; i += 6) {
     discussions.push(...await Promise.all(catalog.discussions.slice(i, i + 6).map(async entry => {

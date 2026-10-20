@@ -59,6 +59,7 @@ try:
     adb('shell', 'am', 'start', '-n', 'app.studyit.reader/.MainActivity')
     tap(find('Saved discussions'))
     find('I understand slopes.')
+    find('Library checked', scroll=True)
     screenshot('saved-after-restart')
     logs = adb('logcat', '-d')
     with open(OUT + '/logcat.txt', 'w') as file:

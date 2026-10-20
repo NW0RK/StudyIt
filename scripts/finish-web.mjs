@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 const file = 'dist/index.html';
 let html = await readFile(file, 'utf8');
 html = html.replace('<head>', '<head><meta name="theme-color" content="#245e52"><meta name="description" content="A quieter corner of the internet for learning. Explore AI-written discussions, one subject at a time.">');
+html = html.replace('</head>', '<style>:focus-visible{outline:2px solid #45897a!important;outline-offset:3px}html{color-scheme:light dark}body{background:#f5f6f3}</style></head>');
 html = html.replace('</body>', `<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}</script></body>`);
 await writeFile(file, html);
 await writeFile('dist/.nojekyll', '');
