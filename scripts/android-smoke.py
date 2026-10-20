@@ -94,6 +94,12 @@ try:
     find(second_theme)
     screenshot('alternate-theme')
     tap(find(second_theme))
+    tap(find('Search discussions'))
+    adb('shell', 'input', 'text', 'recursion')
+    find('Read Why does recursion need a base case?')
+    screenshot('search')
+    adb('shell', 'input', 'keyevent', 'KEYCODE_BACK')
+    tap(find('Home feed'))
     bookmark = find('Save I understand slopes.', scroll=True, alternatives=('Unsave I understand slopes.',))
     if bookmark.attrib.get('content-desc', '').startswith('Save '):
         tap(bookmark)
