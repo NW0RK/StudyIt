@@ -74,7 +74,8 @@ try:
         adb('logcat', '-c')
     adb('shell', 'am', 'force-stop', 'app.studyit.reader')
     adb('shell', 'am', 'start', '-n', 'app.studyit.reader/.MainActivity')
-    find('Your daily dose of discovery.')
+    find('Search discussions')
+    find('Home feed')
     screenshot('home')
     bookmark = find('Save I understand slopes.', scroll=True, alternatives=('Unsave I understand slopes.',))
     if bookmark.attrib.get('content-desc', '').startswith('Save '):

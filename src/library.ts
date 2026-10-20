@@ -7,7 +7,7 @@ import { syncLibrary, type Library } from './sync';
 export type { Library } from './sync';
 export type Preferences = { saved: string[]; read: string[]; followed: string[]; theme: 'light' | 'dark'; repository: string };
 export const initialLibrary: Library = { catalog: catalogSchema.parse(seed.catalog), discussions: discussionSchema.array().parse(seed.discussions), lastUpdated: null };
-export const defaultPreferences: Preferences = { saved: [], read: [], followed: seed.catalog.subjects.map(s => s.id), theme: Platform.OS === 'web' && typeof window !== 'undefined' && window.innerWidth >= 1060 ? 'dark' : 'light', repository: 'NW0RK/StudyIt' };
+export const defaultPreferences: Preferences = { saved: [], read: [], followed: seed.catalog.subjects.map(s => s.id), theme: Platform.OS !== 'web' || (typeof window !== 'undefined' && window.innerWidth >= 1060) ? 'dark' : 'light', repository: 'NW0RK/StudyIt' };
 export const storage = { get: (key: string) => AsyncStorage.getItem(key), set: (key: string, value: string) => AsyncStorage.setItem(key, value) };
 export async function loadCached(): Promise<Library | null> {
   try {
