@@ -1,6 +1,17 @@
 # StudyIt release verification
 
-Verified on October 21, 2026 (Asia/Tbilisi).
+Latest verification: October 24, 2026 (Asia/Tbilisi).
+
+## Android 1.0.2 icon and shared library
+
+- Application revision: `678e8ce`; version 1.0.2, Android version code 3.
+- [APK build and Android emulator checks](https://github.com/NW0RK/StudyIt/actions/runs/40114262537): both jobs passed, including navigation, themes, search, nested math replies, saved-item persistence, shared-library refresh, and offline reading. Inline WebView reading assertions join accessibility text runs rather than requiring them to be tappable controls.
+- All 21 local checks passed: TypeScript, behavioral tests, avatar stability, safe rendering, content validation, and synchronization failure recovery.
+- [Website build and favicon deployment](https://github.com/NW0RK/StudyIt/actions/runs/40114263231): successful. The published favicon endpoint was verified.
+- New icon: `assets/studyit-icon-v1.png`, generated using the built-in imagegen tool. The prompt is recorded in [ICON_PROMPT.md](ICON_PROMPT.md). Launcher artwork was extracted from the APK and visually verified.
+- The compiled APK was inspected to confirm it contains the production `github.io/StudyIt/library` address. The live catalog was reachable and listed the same five discussions. Content refreshes at launch or when Refresh is pressed; bookmarks, follows, theme, and read status remain local.
+- APK SHA-256: `d1960049b4a2293ac963b54fb1a14719f56a004080268ebc88a74bcd1e9d7432`.
+- No physical phone was connected for this build; the Galaxy A52 evidence below applies to earlier versions.
 
 ## Android 1.0.1 visual refresh
 
