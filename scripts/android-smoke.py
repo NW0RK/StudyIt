@@ -30,12 +30,21 @@ def tree():
         file.write(raw)
     return ET.fromstring(raw)
 
-def find(phrase, scroll=False, attempts=5, alternatives=()):
+def find(phrase, scroll=False, attempts=5, alternatives=(), visible=True):
     previous = None
     direction = 1
     reversed_once = False
     for attempt in range(24 if scroll else attempts):
         root = tree()
+        if not visible:
+            # Chromium exposes inline math/text runs with zero-sized bounds on
+            # some emulator WebViews. They are readable accessibility content,
+            # but cannot serve as tap coordinates. Join runs for reading checks.
+            rendered = ' '.join(node.attrib.get('text', '') for node in root.iter('node'))
+            rendered = re.sub(r'\s+', ' ', rendered)
+            if any(term in rendered for term in (phrase, *alternatives)):
+                print('Read accessibility content:', phrase, flush=True)
+                return root
         for node in root.iter('node'):
             if any(term in node.attrib.get('text', '') or term in node.attrib.get('content-desc', '') for term in (phrase, *alternatives)):
                 bounds = list(map(int, re.findall(r'-?\d+', node.attrib.get('bounds', ''))))
@@ -123,8 +132,8 @@ try:
     tap(find('Collapse reply by Maya'))
     find('Reply collapsed')
     tap(find('Expand reply by Maya'))
-    find('dividing by zero', scroll=True)
-    find('instantaneous speed', scroll=True)
+    find('dividing by zero', scroll=True, visible=False)
+    find('instantaneous speed', scroll=True, visible=False)
     screenshot('nested-math-reply')
     adb('shell', 'am', 'force-stop', 'app.studyit.reader')
     adb('shell', 'am', 'start', '-n', 'app.studyit.reader/.MainActivity')

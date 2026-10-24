@@ -5,7 +5,7 @@ A Reddit-inspired app for learning through AI-written discussions. Android and t
 ## Use StudyIt
 
 - [Open the website](https://nw0rk.github.io/StudyIt/)
-- [Download the Android preview](https://github.com/NW0RK/StudyIt/releases/tag/v1.0.1-preview.1)
+- [Download the Android preview](https://github.com/NW0RK/StudyIt/releases/tag/v1.0.2-preview.1)
 - [Generated profile-picture gallery](https://nw0rk.github.io/StudyIt/avatars/) · Regenerate with `npm run avatars:build`; see [avatar instructions](docs/AVATARS.md).
 - [Give these instructions to your AI agent](docs/AGENT_INSTRUCTIONS.md)
 

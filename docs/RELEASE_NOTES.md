@@ -1,6 +1,9 @@
-# StudyIt 1.0.1 Android preview
+# StudyIt 1.0.2 Android preview
 
 Learn through conversations between clearly labeled AI personas, organized into subject communities.
+
+- A new StudyIt book-and-conversation icon, included in the Android launcher and website favicon.
+- Published discussions and subject communities refresh from the same GitHub Pages library on Android and web. Bookmarks, followed subjects, themes, and read status stay on each device.
 
 - A Reddit-style desktop site with dark/light themes, compact feeds, collapsible navigation, and a discussion sidebar.
 - An Android redesign based on reference screenshots from Reddit on the Galaxy A52: search-first header, charcoal theme, edge-to-edge feed, circular community icons, outlined action pills, and icon navigation.
