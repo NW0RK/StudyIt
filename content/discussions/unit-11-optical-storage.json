@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "subject": {
+    "id": "professional-english",
+    "name": "Professional English",
+    "description": "English vocabulary, language patterns and communication practice for computer users.",
+    "color": "#2563EB",
+    "icon": "book-outline"
+  },
+  "discussion": {
+    "schemaVersion": 1,
+    "id": "infotech-unit-11-optical-storage",
+    "subjectId": "professional-english",
+    "title": "Unit 11: Optical storage",
+    "tags": [
+      "infotech",
+      "unit-11",
+      "optical-discs",
+      "connectors",
+      "compatibility"
+    ],
+    "difficulty": "Beginner",
+    "publishedAt": "2026-11-04T17:03:00Z",
+    "updatedAt": "2026-11-04T17:03:00Z",
+    "question": {
+      "learnerName": "Jamie",
+      "body": "I recognise CD and DVD, but I do not understand read-only, recordable and rewritable. I also want to write a forum post that uses connectors properly instead of repeating and in every sentence.",
+      "priorKnowledge": "Can distinguish HDDs from SSDs and explain simple storage precautions.",
+      "interests": "Describing a fictional collection of archived photos and videos."
+    },
+    "personas": [
+      {
+        "id": "maya",
+        "name": "Maya",
+        "role": "Explainer: clear vocabulary and language patterns"
+      },
+      {
+        "id": "leo",
+        "name": "Leo",
+        "role": "Careful skeptic: tests assumptions and asks challenges"
+      },
+      {
+        "id": "iris",
+        "name": "Iris",
+        "role": "Connection maker: examples and communication practice"
+      }
+    ],
+    "replies": [
+      {
+        "id": "infotech-unit-11-r1",
+        "parentId": null,
+        "personaId": "maya",
+        "body": "**Unit focus: optical media and connectors.** Optical drives use a laser to read discs. Distinguish the **disc**, which holds information, from the **drive**, which reads or writes compatible media. CD, DVD and Blu-ray are optical-disc families. Whether a drive supports a particular disc and recording task must be checked.",
+        "sourceIds": [
+          "book"
+        ]
+      },
+      {
+        "id": "infotech-unit-11-r2",
+        "parentId": null,
+        "personaId": "iris",
+        "body": "Common labels include **CD-ROM/DVD-ROM** for read-only media, **CD-R/DVD-R** for recordable media, and **CD-RW/DVD-RW** for rewritable media. Recordable media allow recording within the format's limits; rewritable media permit erasing and recording again. An unfinalised recordable disc may allow further sessions if space and compatibility permit, so recorded once is an incomplete description of every workflow.",
+        "sourceIds": [
+          "optical"
+        ]
+      },
+      {
+        "id": "infotech-unit-11-r3",
+        "parentId": "infotech-unit-11-r2",
+        "personaId": "leo",
+        "body": "If I can read a disc, can I assume I can write to it? And if two formats have similar names, does that mean all their drives and discs are interchangeable?",
+        "sourceIds": []
+      },
+      {
+        "id": "infotech-unit-11-r4",
+        "parentId": "infotech-unit-11-r3",
+        "personaId": "maya",
+        "body": "Reading support does not establish writing support. Check both the drive and the exact medium. Similar names also do not guarantee compatibility.\n\nUse **because** for a reason, **therefore** for a consequence, and **however** for contrast: **This drive cannot write DVDs; therefore, it cannot record our DVD backup.** **The disc is compatible with one drive. However, we have not checked the other drive.** These are hypothetical examples.",
+        "sourceIds": [
+          "optical"
+        ]
+      },
+      {
+        "id": "infotech-unit-11-r5",
+        "parentId": null,
+        "personaId": "iris",
+        "body": "**Practice:**\n\n1. Which label suggests rewritable media: CD-ROM or CD-RW?\n2. Join with because: We cannot record the DVD. This drive only reads DVDs.\n3. Correct the logic: The drive reads this format; therefore, it must write this format.\n\n**Answers:** 1. CD-RW. 2. We cannot record the DVD **because** this drive only reads DVDs. 3. Reading support does not prove writing support.",
+        "sourceIds": []
+      },
+      {
+        "id": "infotech-unit-11-r6",
+        "parentId": "infotech-unit-11-r5",
+        "personaId": "maya",
+        "body": "**Forum-post model:**\n\nI would check the exact drive and disc formats before transferring our archive. The drive can read our existing discs; however, we have not checked whether it can write new ones. Therefore, we should confirm recording support before preparing the files.\n\n**Takeaway:** distinguish a format from a capability. A connector must express a valid relationship, not merely make the paragraph sound more formal.",
+        "sourceIds": []
+      }
+    ],
+    "sources": [
+      {
+        "id": "book",
+        "title": "Cambridge University Press: Infotech Fourth Edition, map of the book",
+        "url": "https://assets.cambridge.org/97805217/02997/frontmatter/9780521702997_frontmatter.pdf"
+      },
+      {
+        "id": "optical",
+        "title": "IBM documentation: Optical media types",
+        "url": "https://www.ibm.com/docs/en/i/7.4.0?topic=devices-optical-media-types"
+      }
+    ]
+  }
+}

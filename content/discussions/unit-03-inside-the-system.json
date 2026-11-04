@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "subject": {
+    "id": "professional-english",
+    "name": "Professional English",
+    "description": "English vocabulary, language patterns and communication practice for computer users.",
+    "color": "#2563EB",
+    "icon": "book-outline"
+  },
+  "discussion": {
+    "schemaVersion": 1,
+    "id": "infotech-unit-03-inside-the-system",
+    "subjectId": "professional-english",
+    "title": "Unit 3: Inside the system",
+    "tags": [
+      "infotech",
+      "unit-3",
+      "cpu",
+      "memory",
+      "relative-clauses"
+    ],
+    "difficulty": "Beginner",
+    "publishedAt": "2026-11-04T17:03:00Z",
+    "updatedAt": "2026-11-04T17:03:00Z",
+    "question": {
+      "learnerName": "Jamie",
+      "body": "My computer has RAM, storage and a processor. If RAM and storage both use GB, are they the same thing? I also want to explain each component using who, which or that, but I do not know which word fits.",
+      "priorKnowledge": "Understands hardware, software, input, output and storage as broad categories.",
+      "interests": "Understanding the specifications of a computer used for schoolwork."
+    },
+    "personas": [
+      {
+        "id": "maya",
+        "name": "Maya",
+        "role": "Explainer: clear vocabulary and language patterns"
+      },
+      {
+        "id": "leo",
+        "name": "Leo",
+        "role": "Careful skeptic: tests assumptions and asks challenges"
+      },
+      {
+        "id": "iris",
+        "name": "Iris",
+        "role": "Connection maker: examples and communication practice"
+      }
+    ],
+    "replies": [
+      {
+        "id": "infotech-unit-03-r1",
+        "parentId": null,
+        "personaId": "maya",
+        "body": "**Unit focus: internal components, memory units and defining relative clauses.** The **CPU**, or processor, executes instructions. Its control unit coordinates operations; its arithmetic logic unit performs arithmetic and logical operations. **RAM** holds data and instructions in active use. Persistent storage keeps saved files when the machine is switched off.",
+        "sourceIds": [
+          "book",
+          "ram"
+        ]
+      },
+      {
+        "id": "infotech-unit-03-r2",
+        "parentId": "infotech-unit-03-r1",
+        "personaId": "leo",
+        "body": "If the specification says 8 GB RAM and 256 GB storage, can I call that 264 GB of memory? They use the same unit, so why not add them?",
+        "sourceIds": []
+      },
+      {
+        "id": "infotech-unit-03-r3",
+        "parentId": "infotech-unit-03-r2",
+        "personaId": "maya",
+        "body": "The unit measures capacity, but the components serve different purposes. Report **8 GB of RAM and 256 GB of storage** separately. Ordinary system RAM is volatile: its contents do not persist without power. Saved files belong on persistent storage.\n\nA **bit** is a binary digit; a **byte** is eight bits. Watch the symbols: **b** for bit and **B** for byte. Decimal GB and binary GiB are also different units; do not silently equate them.",
+        "sourceIds": [
+          "ram"
+        ]
+      },
+      {
+        "id": "infotech-unit-03-r4",
+        "parentId": null,
+        "personaId": "iris",
+        "body": "A defining relative clause identifies or describes a noun: **The CPU is the component that executes instructions.** Use **which** or **that** for things, and **who** for people. In this example, the relative word is the subject, so keep it: The component **that executes** instructions. Do not add a second subject such as it.",
+        "sourceIds": [
+          "relative"
+        ]
+      },
+      {
+        "id": "infotech-unit-03-r5",
+        "parentId": "infotech-unit-03-r4",
+        "personaId": "leo",
+        "body": "**Challenge:** correct these descriptions.\n\n1. RAM is memory who holds working data.\n2. The CPU is a component that it executes instructions.\n3. A technician is someone which repairs computers.\n\nAlso explain why a storage upgrade does not automatically increase RAM.",
+        "sourceIds": []
+      },
+      {
+        "id": "infotech-unit-03-r6",
+        "parentId": "infotech-unit-03-r5",
+        "personaId": "maya",
+        "body": "**Answers:** 1. RAM is memory **that/which** holds working data. 2. The CPU is a component **that executes** instructions. 3. A technician is someone **who** repairs computers. A storage upgrade changes storage capacity; it does not itself add RAM.\n\n**Takeaway:** distinguish components by function, then describe them with **noun + that/which + verb**. Write three notes about an imaginary computer, keeping RAM and storage separate.",
+        "sourceIds": [
+          "relative"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "book",
+        "title": "Cambridge University Press: Infotech Fourth Edition, map of the book",
+        "url": "https://assets.cambridge.org/97805217/02997/frontmatter/9780521702997_frontmatter.pdf"
+      },
+      {
+        "id": "ram",
+        "title": "Kingston: The difference between memory and storage",
+        "url": "https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage"
+      },
+      {
+        "id": "relative",
+        "title": "British Council: Defining relative clauses",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/relative-clauses-defining-relative-clauses"
+      }
+    ]
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "subject": {
+    "id": "professional-english",
+    "name": "Professional English",
+    "description": "English vocabulary, language patterns and communication practice for computer users.",
+    "color": "#2563EB",
+    "icon": "book-outline"
+  },
+  "discussion": {
+    "schemaVersion": 1,
+    "id": "infotech-unit-09-devices-for-the-disabled",
+    "subjectId": "professional-english",
+    "title": "Unit 9: Devices for the disabled",
+    "tags": [
+      "infotech",
+      "unit-9",
+      "accessibility",
+      "assistive-technology",
+      "noun-phrases"
+    ],
+    "difficulty": "Beginner",
+    "publishedAt": "2026-11-04T17:03:00Z",
+    "updatedAt": "2026-11-04T17:03:00Z",
+    "question": {
+      "learnerName": "Jamie",
+      "body": "I am studying the unit on assistive technology. How do screen readers, Braille displays and voice input differ? Long phrases such as a refreshable Braille display also confuse me: which word names the device?",
+      "priorKnowledge": "Can explain input and output functions and describe devices with adjectives.",
+      "interests": "Making a fictional school website easier for different people to use."
+    },
+    "personas": [
+      {
+        "id": "maya",
+        "name": "Maya",
+        "role": "Explainer: clear vocabulary and language patterns"
+      },
+      {
+        "id": "leo",
+        "name": "Leo",
+        "role": "Careful skeptic: tests assumptions and asks challenges"
+      },
+      {
+        "id": "iris",
+        "name": "Iris",
+        "role": "Connection maker: examples and communication practice"
+      }
+    ],
+    "replies": [
+      {
+        "id": "infotech-unit-09-r1",
+        "parentId": null,
+        "personaId": "maya",
+        "body": "**Unit focus: assistive technology and noun phrases.** The course title is retained here so you can match the unit. In your own writing, **people with disabilities** is a useful respectful default; follow an individual's preferred wording. Discuss a person's task and access needs rather than assuming everyone uses the same tool.",
+        "sourceIds": [
+          "book"
+        ]
+      },
+      {
+        "id": "infotech-unit-09-r2",
+        "parentId": null,
+        "personaId": "iris",
+        "body": "A **screen reader** presents interface content through speech or Braille. A **refreshable Braille display** provides tactile output. **Screen magnification** enlarges displayed content. **Speech recognition** supports spoken input. These tools solve different access problems and may be combined. Accessible text, meaningful labels and keyboard access help assistive technologies work effectively.",
+        "sourceIds": [
+          "access"
+        ]
+      },
+      {
+        "id": "infotech-unit-09-r3",
+        "parentId": "infotech-unit-09-r2",
+        "personaId": "leo",
+        "body": "If a website includes a button showing a magnifying-glass icon, is the label magnifying glass enough? Also, can we decide which tool someone needs from a broad disability label alone?",
+        "sourceIds": []
+      },
+      {
+        "id": "infotech-unit-09-r4",
+        "parentId": "infotech-unit-09-r3",
+        "personaId": "maya",
+        "body": "Name the button's action: if it starts a search, **Search** is a more useful accessible name than a description of its shape. Ask what the person needs to do and how they prefer to interact. A disability label alone does not determine the best tool. A feature also needs usable content and controls; owning assistive hardware cannot fix every barrier on a poorly designed site.",
+        "sourceIds": [
+          "access"
+        ]
+      },
+      {
+        "id": "infotech-unit-09-r5",
+        "parentId": null,
+        "personaId": "iris",
+        "body": "A noun phrase has a **head** and may include words that describe it. In **a refreshable Braille display**, the head is **display**. In **speech recognition software**, the head is **software**. The earlier words narrow the meaning.\n\n**Practice:** find the head in an alternative keyboard and a large on-screen button.\n\n**Answers:** **keyboard** and **button**.",
+        "sourceIds": [
+          "nouns"
+        ]
+      },
+      {
+        "id": "infotech-unit-09-r6",
+        "parentId": "infotech-unit-09-r5",
+        "personaId": "maya",
+        "body": "**Short email model:**\n\nHi Casey,\nOur website should support keyboard navigation and meaningful control labels. A screen reader can present accessible text through speech or Braille, while speech recognition supports spoken input. We should ask users about their needs and test the actual tasks.\n\n**Takeaway:** distinguish input from output, identify the head of long noun phrases, and describe access needs without making assumptions about individuals.",
+        "sourceIds": []
+      }
+    ],
+    "sources": [
+      {
+        "id": "book",
+        "title": "Cambridge University Press: Infotech Fourth Edition, map of the book",
+        "url": "https://assets.cambridge.org/97805217/02997/frontmatter/9780521702997_frontmatter.pdf"
+      },
+      {
+        "id": "access",
+        "title": "W3C WAI: Accessibility principles",
+        "url": "https://www.w3.org/WAI/fundamentals/accessibility-principles/"
+      },
+      {
+        "id": "nouns",
+        "title": "Cambridge Dictionary: Noun phrases",
+        "url": "https://dictionary.cambridge.org/grammar/british-grammar/noun-phrases"
+      }
+    ]
+  }
+}
