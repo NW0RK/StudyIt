@@ -1,0 +1,46 @@
+name: Verify in-app Android installation
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - run: npm ci
+      - name: Build an older client with the new updater for installation testing
+        env:
+          EXPO_PUBLIC_LIBRARY_URL: https://nw0rk.github.io/StudyIt/library
+        run: |
+          npm run content:build
+          sed -i 's/versionCode: 4/versionCode: 3/' app.config.ts
+          npx expo prebuild --platform android --no-install
+      - uses: gradle/actions/setup-gradle@v4
+      - working-directory: android
+        run: ./gradlew assembleRelease --no-daemon -PreactNativeArchitectures=x86_64
+      - run: sudo chmod a+rw /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          script: python3 scripts/android-update-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: StudyIt-in-app-installation-verification
+          path: test-results/android-update/
