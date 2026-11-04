@@ -12,3 +12,4 @@ playwright-report/
 tools/
 releases/
 release-output/
+__pycache__/

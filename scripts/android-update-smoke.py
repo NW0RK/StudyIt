@@ -22,11 +22,13 @@ def tree():
         file.write(raw)
     return ET.fromstring(raw)
 
-def find(text, timeout=40, scroll=False):
+def find(text, timeout=40, scroll=False, exact=False):
     deadline = time.time() + timeout
     while time.time() < deadline:
         for node in tree().iter('node'):
-            if text in node.attrib.get('text', '') or text in node.attrib.get('content-desc', ''):
+            labels = [node.attrib.get('text', ''), node.attrib.get('content-desc', '')]
+            matches = any(text.casefold() == label.casefold() if exact else text in label for label in labels)
+            if matches:
                 bounds = list(map(int, re.findall(r'\d+', node.attrib.get('bounds', ''))))
                 if len(bounds) == 4 and bounds[2] > bounds[0] and bounds[3] > bounds[1]:
                     return bounds
@@ -71,7 +73,7 @@ try:
     tap('Allow from this source')
     adb('shell', 'input', 'keyevent', 'KEYCODE_BACK')
     # The automatic foreground handoff opens the Android package installer.
-    tap('Update', timeout=60)
+    tap('Update', timeout=60, exact=True)
     time.sleep(20)
     screenshot('android-installation')
     package = adb('shell', 'dumpsys', 'package', 'app.studyit.reader')

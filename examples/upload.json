@@ -1,87 +1,94 @@
 {
+  "schemaVersion": 1,
   "discussion": {
     "schemaVersion": 1,
-    "id": "derivatives-as-speed",
-    "subjectId": "mathematics",
-    "title": "I understand slopes. Why does everyone say a derivative is a rate of change?",
+    "id": "infotech-unit-01-living-in-a-digital-age",
+    "subjectId": "professional-english",
+    "title": "Unit 1: Living in a digital age",
     "tags": [
-      "calculus",
-      "intuition"
+      "infotech",
+      "unit-1",
+      "collocations",
+      "everyday-computing"
     ],
     "difficulty": "Beginner",
-    "publishedAt": "2026-10-18T09:00:00Z",
-    "updatedAt": "2026-10-18T09:00:00Z",
+    "publishedAt": "2026-11-04T17:03:00Z",
+    "updatedAt": "2026-11-04T17:03:00Z",
     "question": {
-      "learnerName": "Curious learner",
-      "body": "I can find the slope of a straight line using rise over run. But a curve has lots of different slopes, right?\n\nI’m interested in how this connects to a car’s speedometer. What exactly is changing when we take a derivative?",
-      "priorKnowledge": "Algebra, coordinates, and the slope of a straight line.",
-      "interests": "Cars, motion, and visual explanations."
+      "learnerName": "Jamie",
+      "body": "I can name places where people use computers, but I struggle to explain what they do in natural English. Do we make information, do information, or process information? How can I describe computers at school and at work?",
+      "priorKnowledge": "Basic present-simple sentences and familiar words such as computer, phone and internet.",
+      "interests": "School projects, online games and everyday technology."
     },
     "personas": [
       {
         "id": "maya",
         "name": "Maya",
-        "role": "The visual explainer"
+        "role": "Explainer: clear vocabulary and language patterns"
       },
       {
         "id": "leo",
         "name": "Leo",
-        "role": "The curious skeptic"
+        "role": "Careful skeptic: tests assumptions and asks challenges"
       },
       {
         "id": "iris",
         "name": "Iris",
-        "role": "The connection maker"
+        "role": "Connection maker: examples and communication practice"
       }
     ],
     "replies": [
       {
-        "id": "r1",
+        "id": "infotech-unit-01-r1",
         "parentId": null,
         "personaId": "maya",
-        "body": "You already have the right starting point: **a curve has a slope at each point**, if it is differentiable there.\n\nImagine a graph of your car’s distance against time. The slope between two points is its *average* speed over that interval. Bring those points closer together, and you zoom in on the speed at one instant.\n\nThat limiting slope is the derivative. Your speedometer is giving you the everyday version of this idea.",
+        "body": "**Unit focus: collocations and everyday computer uses.** A collocation is a familiar combination of words. Learn the verb together with its object: **process information**, **store data**, **access the internet**, **send an email**, and **make a reservation**. These are more useful than memorising an isolated word such as information.",
         "sourceIds": [
-          "openstax"
+          "book"
         ]
       },
       {
-        "id": "r2",
-        "parentId": "r1",
-        "personaId": "leo",
-        "body": "But if the interval becomes zero, aren’t we dividing by zero? That is the bit that always loses me.",
-        "sourceIds": []
-      },
-      {
-        "id": "r3",
-        "parentId": "r2",
-        "personaId": "maya",
-        "body": "Great catch. We **never substitute a zero interval into the original fraction**. We ask what value the fraction approaches as the interval gets arbitrarily small.\n\nFor distance $s(t)=t^2$, the average speed from $t$ to $t+h$ is:\n\n$$\\frac{(t+h)^2-t^2}{h}=2t+h\\quad(h\\ne0)$$\n\nAs $h$ approaches zero, this approaches $2t$. So at $t=3$, the instantaneous speed is $6$ distance units per time unit.",
-        "sourceIds": [
-          "openstax"
-        ]
-      },
-      {
-        "id": "r4",
+        "id": "infotech-unit-01-r2",
         "parentId": null,
         "personaId": "iris",
-        "body": "The phrase **rate of change** also tells you the units. Distance divided by time gives speed; velocity divided by time gives acceleration.\n\nA derivative always asks: *how much does the output change per small change in the input, near this point?*\n\nTry this check: if the distance-time graph becomes flat for ten seconds, what should the speedometer read?",
+        "body": "Compare three original examples:\n\n- Students **use computers to research topics**.\n- Bank staff **use computers to process transactions**.\n- Airport staff **use computers to check reservations**.\n\nThe pattern is **person + uses/use + computers + to + base verb**. It explains a purpose. Notice the third-person ending: a teacher **uses**, but teachers **use**.",
         "sourceIds": []
       },
       {
-        "id": "r5",
-        "parentId": "r4",
+        "id": "infotech-unit-01-r3",
+        "parentId": "infotech-unit-01-r1",
         "personaId": "leo",
-        "body": "Zero! The distance is not changing even though time keeps moving. I think the graph connection finally makes sense.",
+        "body": "Does that mean make is always wrong with computer vocabulary? I have heard make a video, and that sounds natural. Also, does access the internet mean exactly the same thing as search the internet?",
+        "sourceIds": []
+      },
+      {
+        "id": "infotech-unit-01-r4",
+        "parentId": "infotech-unit-01-r3",
+        "personaId": "maya",
+        "body": "**Make a video** is natural: the right verb depends on the noun and intended meaning. Do not invent a rule that bans make. **Access** means obtain entry or use; **search** means look for something. You can access the internet and then search for a particular article. Likewise, storing data means keeping it; processing data means performing operations on it.",
+        "sourceIds": []
+      },
+      {
+        "id": "infotech-unit-01-r5",
+        "parentId": null,
+        "personaId": "iris",
+        "body": "**Try it before reading the answers.**\n\n1. A librarian uses a database to ___ book records. (store / do)\n2. I use my laptop ___ write reports. (to / for)\n3. Correct: Our teacher use computers to prepare lessons.\n4. Write one sentence about computers in entertainment.\n\n**Answers:** 1. store; 2. to; 3. Our teacher **uses** computers to prepare lessons. 4. One possibility: Game designers use computers to create animations.",
+        "sourceIds": []
+      },
+      {
+        "id": "infotech-unit-01-r6",
+        "parentId": "infotech-unit-01-r5",
+        "personaId": "maya",
+        "body": "**Takeaway:** combine a user, a task and a natural verb phrase. A short model summary is: Computers support many everyday activities. Students research topics, office workers prepare documents, and travellers make reservations online.\n\nNow write your own three-sentence summary using **store**, **process** and **access**. Check both the collocations and subject-verb agreement.",
         "sourceIds": []
       }
     ],
     "sources": [
       {
-        "id": "openstax",
-        "title": "OpenStax Calculus: Defining the Derivative",
-        "url": "https://openstax.org/books/calculus-volume-1/pages/3-1-defining-the-derivative"
+        "id": "book",
+        "title": "Cambridge University Press: Infotech Fourth Edition, map of the book",
+        "url": "https://assets.cambridge.org/97805217/02997/frontmatter/9780521702997_frontmatter.pdf"
       }
     ]
-  },
-  "schemaVersion": 1
+  }
 }
