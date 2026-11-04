@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "infotech-unit-05-type-click-and-talk",
+  "subjectId": "professional-english",
+  "title": "Unit 5: Type, click and talk!",
+  "tags": [
+    "infotech",
+    "unit-5",
+    "input-devices",
+    "functions",
+    "mouse-actions"
+  ],
+  "difficulty": "Beginner",
+  "publishedAt": "2026-11-04T17:03:00Z",
+  "updatedAt": "2026-11-04T17:03:00Z",
+  "question": {
+    "learnerName": "Jamie",
+    "body": "I can use a mouse and keyboard, but I cannot explain their functions clearly. Is a mouse used for select or used to selecting? And are speech recognition and text-to-speech the same thing?",
+    "priorKnowledge": "Can identify common input and output devices.",
+    "interests": "Explaining keyboard, mouse and voice controls to a new computer user."
+  },
+  "personas": [
+    {
+      "id": "maya",
+      "name": "Maya",
+      "role": "Explainer: clear vocabulary and language patterns"
+    },
+    {
+      "id": "leo",
+      "name": "Leo",
+      "role": "Careful skeptic: tests assumptions and asks challenges"
+    },
+    {
+      "id": "iris",
+      "name": "Iris",
+      "role": "Connection maker: examples and communication practice"
+    }
+  ],
+  "replies": [
+    {
+      "id": "infotech-unit-05-r1",
+      "parentId": null,
+      "personaId": "maya",
+      "body": "**Unit focus: describing input-device functions and features.** A keyboard enters text and commands. A mouse controls a pointer. A microphone captures sound. Useful keyboard groups include letter keys, number keys, function keys and cursor-control keys. Describe a device by explaining what a user does with it.",
+      "sourceIds": [
+        "book"
+      ]
+    },
+    {
+      "id": "infotech-unit-05-r2",
+      "parentId": null,
+      "personaId": "iris",
+      "body": "Two useful patterns are **is used to + base verb** and **is used for + -ing**:\n\n- A mouse **is used to select** items.\n- A mouse **is used for selecting** items.\n\nFor a feature, use **has**: This mouse **has** a scroll wheel. For capability, use **can**: The wheel **can** scroll through a page.",
+      "sourceIds": [
+        "function"
+      ]
+    },
+    {
+      "id": "infotech-unit-05-r3",
+      "parentId": "infotech-unit-05-r2",
+      "personaId": "leo",
+      "body": "So does double-click mean hold the button down? And if a computer reads a sentence aloud, is that speech recognition because speech is involved?",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-05-r4",
+      "parentId": "infotech-unit-05-r3",
+      "personaId": "maya",
+      "body": "**Double-click** means click twice in quick succession. **Drag** means hold a button while moving the pointer; **drop** means release it at the destination. The effect of a click depends on the application.\n\n**Speech recognition** converts spoken input into recognised words or commands. **Text-to-speech** produces spoken output from text. They operate in opposite directions; a product can include both.",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-05-r5",
+      "parentId": null,
+      "personaId": "iris",
+      "body": "**Practice:**\n\n1. A microphone is used for ___ sound. (capture)\n2. A keyboard is used to ___ text. (enter)\n3. Rewrite: This mouse is used to selecting files.\n4. Which process turns spoken words into text?\n\n**Answers:** 1. capturing; 2. enter; 3. This mouse is used **to select** files, or **for selecting** files. 4. Speech recognition.",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-05-r6",
+      "parentId": "infotech-unit-05-r5",
+      "personaId": "maya",
+      "body": "**Takeaway:** distinguish a device, its feature and its function. Model: **This keyboard has arrow keys. They can move the cursor. The keyboard is used for entering text and commands.**\n\nGive a three-sentence explanation of a device you know. Include **has**, **can**, and either **used to + verb** or **used for + -ing**.",
+      "sourceIds": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "book",
+      "title": "Cambridge University Press: Infotech Fourth Edition, map of the book",
+      "url": "https://assets.cambridge.org/97805217/02997/frontmatter/9780521702997_frontmatter.pdf"
+    },
+    {
+      "id": "function",
+      "title": "Cambridge Dictionary: For + -ing",
+      "url": "https://dictionary.cambridge.org/grammar/british-grammar/for-ing"
+    }
+  ]
+}

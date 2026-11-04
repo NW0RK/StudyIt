@@ -78,3 +78,11 @@ Bookmarks, followed subjects, theme, and reading status stay on this device/brow
 - scripts/: content generation, packaging, and preview server.
 - tests/: content, rendering, publishing, and sync behavior checks.
 - .github/workflows/: Pages deployment and Android APK build.
+
+## Android updates
+
+The Android app reads the same published library as the website at startup, on Refresh, and when returning to the foreground after five minutes. Failed refreshes keep the previous library available offline.
+
+Android app versions are distributed through the latest stable release in `NW0RK/StudyIt`. The app checks daily; **Check for app updates** checks immediately. **Update app** downloads the official APK, verifies its SHA-256 checksum, and opens Android's installer. If Android asks for permission to install apps from StudyIt, grant it and return to the app. Installation always requires confirmation.
+
+To publish a version, increment the app version and Android version code, update the release workflow's version assertions and release tag, deploy the website, then run the Android workflow with `publish_release` enabled. Publication requires matching signing certificates and successful emulator upgrade checks. Keep the existing signing identity: changing it prevents installation over an existing copy.

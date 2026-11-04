@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "infotech-unit-08-choosing-a-printer",
+  "subjectId": "professional-english",
+  "title": "Unit 8: Choosing a printer",
+  "tags": [
+    "infotech",
+    "unit-8",
+    "printers",
+    "comparatives",
+    "connectors"
+  ],
+  "difficulty": "Beginner",
+  "publishedAt": "2026-11-04T17:03:00Z",
+  "updatedAt": "2026-11-04T17:03:00Z",
+  "question": {
+    "learnerName": "Jamie",
+    "body": "I need to compare two printers in an email. I confuse cheaper with more cheaper, and I do not know whether to join ideas with because, so or although. How can I make a balanced comparison?",
+    "priorKnowledge": "Can describe device features and form basic superlatives.",
+    "interests": "Comparing fictional printers for a school club."
+  },
+  "personas": [
+    {
+      "id": "maya",
+      "name": "Maya",
+      "role": "Explainer: clear vocabulary and language patterns"
+    },
+    {
+      "id": "leo",
+      "name": "Leo",
+      "role": "Careful skeptic: tests assumptions and asks challenges"
+    },
+    {
+      "id": "iris",
+      "name": "Iris",
+      "role": "Connection maker: examples and communication practice"
+    }
+  ],
+  "replies": [
+    {
+      "id": "infotech-unit-08-r1",
+      "parentId": null,
+      "personaId": "maya",
+      "body": "**Unit focus: printer vocabulary, comparatives and connectors.** An **inkjet** printer uses liquid ink; a **laser** printer uses toner powder. A **multifunction** device combines functions such as printing and scanning. **Duplex printing** means printing on both sides. A specification may give speed in pages per minute, but compare the stated test conditions as well.",
+      "sourceIds": [
+        "book",
+        "ink"
+      ]
+    },
+    {
+      "id": "infotech-unit-08-r2",
+      "parentId": null,
+      "personaId": "iris",
+      "body": "Comparatives contrast items: **cheaper than**, **faster than**, **more expensive than**, **better than**. Do not double the comparative: **cheaper**, not more cheaper.\n\nFor this exercise only, suppose fictional Printer A costs 90 units and Printer B costs 140 units. You can say: **Printer A is cheaper than Printer B.** This sentence compares purchase price; it does not establish lower overall ownership cost.",
+      "sourceIds": [
+        "comparison"
+      ]
+    },
+    {
+      "id": "infotech-unit-08-r3",
+      "parentId": "infotech-unit-08-r2",
+      "personaId": "leo",
+      "body": "What if the cheaper printer has more expensive replacement supplies? Is saying It is cheaper, so it is better a strong conclusion? I also see although used where I expected because.",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-08-r4",
+      "parentId": "infotech-unit-08-r3",
+      "personaId": "maya",
+      "body": "That conclusion needs more evidence. Distinguish purchase price, supplies and usage. **Because** introduces a reason: We chose A **because** it fits our budget. **So** introduces a result: A fits our budget, **so** we chose it. **Although** introduces a contrast: **Although** A costs less to buy, its supplies cost more in our invented example. Avoid although ... but in this standard pattern.",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-08-r5",
+      "parentId": null,
+      "personaId": "iris",
+      "body": "**Practice:**\n\n1. Correct: B is more faster than A.\n2. Join with although: A is cheaper. B includes a scanner.\n3. Complete: We need to scan drawings, ___ we are considering B.\n\n**Answers:** 1. B is **faster** than A. 2. **Although A is cheaper, B includes a scanner.** 3. **so**. Other wording is possible if you change the sentence structure.",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-08-r6",
+      "parentId": "infotech-unit-08-r5",
+      "personaId": "maya",
+      "body": "**Email model, using invented details:**\n\nHi Jo,\nPrinter A is cheaper than Printer B. However, B includes a scanner. Because our club needs to scan drawings, I would compare B with other multifunction models before deciding. We should also check supply costs.\nBest,\nTaylor\n\n**Takeaway:** compare a named feature and explain how it matters. Use connectors to show the actual relationship between ideas.",
+      "sourceIds": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "book",
+      "title": "Cambridge University Press: Infotech Fourth Edition, map of the book",
+      "url": "https://assets.cambridge.org/97805217/02997/frontmatter/9780521702997_frontmatter.pdf"
+    },
+    {
+      "id": "ink",
+      "title": "HP: Printer ink and toner",
+      "url": "https://www.hp.com/us-en/tech-takes/printers/glossary/ink-toner.html"
+    },
+    {
+      "id": "comparison",
+      "title": "British Council: Comparative and superlative adjectives",
+      "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/comparative-superlative-adjectives"
+    }
+  ]
+}

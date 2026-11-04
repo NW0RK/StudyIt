@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, BackHandler, Linking, Modal, Platform, Pressable, ScrollView, StatusBar, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { ActivityIndicator, AppState, BackHandler, Linking, Modal, Platform, Pressable, ScrollView, StatusBar, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Markdown from './src/Markdown';
@@ -7,6 +7,8 @@ import ProfileAvatar from './src/ProfileAvatar';
 import { learnerAvatarSeed, personaAvatarSeed } from './src/avatar';
 import DesktopStyles from './src/DesktopStyles';
 import UploadPicker from './src/UploadPicker';
+import AppUpdates from './src/AppUpdates';
+import { checkDue } from './src/app-update';
 import { parseUpload, selectDiscussions, type Discussion, type Subject, type Upload } from './src/content';
 import { defaultPreferences, initialLibrary, loadCached, loadPreferences, refreshLibrary, storage, type Preferences } from './src/library';
 import { downloadJson, publishingFiles, repositoryUrl } from './src/publishing';
@@ -58,6 +60,7 @@ function StudyIt() {
   const [repoError, setRepoError] = useState('');
   const scroll = useRef<ScrollView>(null);
   const refreshing = useRef(false);
+  const lastRefreshAttempt = useRef(0);
   const saveQueue = useRef(Promise.resolve());
   const p = (desktop || native) ? (prefs.theme === 'dark' ? desktopDark : desktopLight) : (prefs.theme === 'dark' ? dark : light);
   const subjects = library.catalog.subjects;
@@ -73,6 +76,7 @@ function StudyIt() {
   async function refresh() {
     if (refreshing.current) return;
     refreshing.current = true; setBusy(true); setNotice('');
+    lastRefreshAttempt.current = Date.now();
     try { const next = await refreshLibrary(libraryRef.current); libraryRef.current = next; setLibrary(next); }
     catch (e) { setNotice(`${e instanceof Error ? e.message : 'Could not refresh.'} Your available discussions are still here.`); }
     finally { setBusy(false); refreshing.current = false; }
@@ -88,6 +92,25 @@ function StudyIt() {
     if (Platform.OS === 'web') window.addEventListener('hashchange', listener);
     return () => { active = false; if (Platform.OS === 'web') window.removeEventListener('hashchange', listener); };
   }, []);
+  useEffect(() => {
+    if (!native || !ready) return;
+    const listener = AppState.addEventListener('change', state => {
+      if (state === 'active' && checkDue(lastRefreshAttempt.current, Date.now(), 5 * 60 * 1000)) void refresh();
+    });
+    return () => listener.remove();
+  }, [ready]);
+  useEffect(() => {
+    if (ready && ((route.page === 'subject' && !library.catalog.subjects.some(s => s.id === route.id)) ||
+      (route.page === 'thread' && !library.discussions.some(d => d.id === route.id)))) navigate({ page: 'home' });
+  }, [ready, library, route.page, route.id]);
+  useEffect(() => {
+    if (!ready) return;
+    changePrefs(current => {
+      const followed = current.followed.filter(id => library.catalog.subjects.some(s => s.id === id));
+      if (followed.length === current.followed.length) return current;
+      return { ...current, followed: followed.length ? followed : library.catalog.subjects.map(s => s.id) };
+    });
+  }, [ready, library.catalog.version]);
   useEffect(() => { if (ready) { saveQueue.current = saveQueue.current.catch(() => {}).then(() => storage.set('studyit.preferences.v1', JSON.stringify(prefs))).catch(() => setNotice('Your device could not save reading preferences. Check available storage.')); } }, [prefs, ready]);
   useEffect(() => {
     scroll.current?.scrollTo({ y: 0, animated: false });
@@ -149,6 +172,7 @@ function StudyIt() {
               {!filtered.length && <Empty p={p} title={query ? 'No discussions found.' : route.page === 'saved' ? 'Save a little curiosity for later.' : 'There’s room for a new discovery.'} body={query ? 'Try a different phrase or a broader topic.' : route.page === 'saved' ? 'Tap the bookmark on a discussion to keep it here.' : 'Explore communities, follow a subject, or publish a discussion.'} action={() => { setFilter('all'); navigate({ page: 'explore' }); }} />}
             </>}
             <View style={[s.syncFooter, native && { marginHorizontal: 16 }, { borderColor: p.border }]}><View style={[s.row, { flex: 1 }]}>{busy ? <ActivityIndicator size="small" color={p.green} /> : <Icon name="cloud-done-outline" size={16} color={p.muted} />}<Text style={{ color: p.muted, fontSize: 11, flex: 1 }}>{busy ? 'Checking the shared library…' : library.lastUpdated ? `Library checked ${new Date(library.lastUpdated).toLocaleString()}` : 'Bundled library · Ready to read offline'}</Text></View><Button label="Refresh" icon="refresh-outline" p={p} small onPress={() => void refresh()} disabled={busy || !ready} /></View>
+            <AppUpdates p={p} />
           </View>
           {wide && <DesktopRail discussions={library.discussions} subjects={subjects} p={p} onOpen={id => navigate({ page: "thread", id })} onSubject={id => navigate({ page: "subject", id })} />}
         </View>

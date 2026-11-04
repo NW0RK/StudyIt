@@ -2,6 +2,11 @@ name: Build installable Android APK
 on:
   workflow_dispatch:
     inputs:
+      publish_release:
+        description: 'Publish the verified APK as the latest GitHub release'
+        required: false
+        default: false
+        type: boolean
       library_url:
         description: 'Published library URL; leave blank for the default GitHub Pages URL'
         required: false
@@ -54,10 +59,26 @@ jobs:
       - name: Build standalone preview APK
         working-directory: android
         run: ./gradlew assembleRelease --no-daemon -PreactNativeArchitectures=arm64-v8a,x86_64
+      - name: Verify upgrade signing and package release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release download v1.0.2-preview.1 --pattern StudyIt.apk --dir baseline
+          BUILD_TOOLS=$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -1)
+          APK=android/app/build/outputs/apk/release/app-release.apk
+          "$BUILD_TOOLS/apksigner" verify --print-certs baseline/StudyIt.apk > baseline-cert.txt
+          "$BUILD_TOOLS/apksigner" verify --print-certs "$APK" > new-cert.txt
+          diff <(grep 'certificate SHA-256 digest' baseline-cert.txt) <(grep 'certificate SHA-256 digest' new-cert.txt)
+          "$BUILD_TOOLS/aapt" dump badging "$APK" > apk-badging.txt
+          sed -n '1p' apk-badging.txt > apk-package.txt
+          grep "name='app.studyit.reader' versionCode='4' versionName='1.0.3'" apk-package.txt
+          npx tsx scripts/package-android.ts "$APK"
       - uses: actions/upload-artifact@v4
         with:
           name: StudyIt-Android-preview
-          path: android/app/build/outputs/apk/release/*.apk
+          path: release-output/
   verify:
     needs: apk
     if: ${{ always() && (needs.apk.result == 'success' || (needs.apk.result == 'skipped' && inputs.apk_run_id != '')) }}
@@ -78,10 +99,17 @@ jobs:
           path: android/app/build/outputs/apk/release
           run-id: ${{ inputs.apk_run_id || github.run_id }}
           github-token: ${{ github.token }}
+      - name: Download previous release for upgrade testing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release download v1.0.2-preview.1 --pattern StudyIt.apk --dir baseline
       - name: Enable emulator acceleration
         run: sudo chmod a+rw /dev/kvm
       - name: Verify APK on Android emulator
         uses: reactivecircus/android-emulator-runner@v2
+        env:
+          STUDYIT_APK: android/app/build/outputs/apk/release/StudyIt.apk
+          STUDYIT_BASELINE_APK: baseline/StudyIt.apk
         with:
           api-level: 35
           arch: x86_64
@@ -93,3 +121,23 @@ jobs:
         with:
           name: StudyIt-Android-verification
           path: test-results/android/
+  release:
+    needs: [apk, verify]
+    if: ${{ inputs.publish_release && needs.apk.result == 'success' && needs.verify.result == 'success' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: StudyIt-Android-preview
+          path: release-output
+      - name: Publish verified Android release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd release-output
+          sha256sum --check StudyIt.apk.sha256
+          cd ..
+          gh release create v1.0.3 release-output/StudyIt.apk release-output/StudyIt.apk.sha256 release-output/android-update.json --target "${{ github.sha }}" --title "StudyIt 1.0.3 — English library and in-app updates" --notes-file docs/RELEASE_NOTES.md --latest

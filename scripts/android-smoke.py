@@ -85,6 +85,23 @@ def screenshot(name):
 
 try:
     apk = os.environ.get('STUDYIT_APK') or glob.glob('android/app/build/outputs/apk/release/*.apk')[0]
+    baseline = os.environ.get('STUDYIT_BASELINE_APK')
+    if baseline:
+        adb('install', '-r', baseline)
+        adb('shell', 'am', 'start', '-n', 'app.studyit.reader/.MainActivity')
+        find('Library checked', scroll=True, attempts=15)
+        tap(find('Open communities'))
+        tap(find('Open Professional English community', scroll=True))
+        # Join the replacement subject before upgrading; the old app knows only its original follows.
+        root = tree()
+        if any(node.attrib.get('text') == 'Join' for node in root.iter('node')):
+            tap(find('Join'))
+        tap(find('Search discussions'))
+        adb('shell', 'input', 'text', 'digital')
+        bookmark = find('Save Unit 1: Living in a digital age', scroll=True, alternatives=('Unsave Unit 1: Living in a digital age',))
+        if bookmark.attrib.get('content-desc', '').startswith('Save '):
+            tap(bookmark)
+        adb('shell', 'am', 'force-stop', 'app.studyit.reader')
     if os.environ.get('STUDYIT_SKIP_INSTALL') != '1':
         if PHYSICAL:
             adb('install', '--user', '0', '--no-streaming', '-r', apk)
@@ -96,12 +113,17 @@ try:
     adb('shell', 'am', 'start', '-n', 'app.studyit.reader/.MainActivity')
     find('Search discussions')
     find('Home feed')
+    if baseline:
+        tap(find('Saved discussions'))
+        find('Read Unit 1: Living in a digital age', scroll=True)
+        screenshot('saved-after-app-upgrade')
+        tap(find('Home feed'))
     screenshot('home')
     tap(find('Open communities'))
     find('YOUR COMMUNITIES')
     screenshot('communities')
-    tap(find('Open Mathematics community'))
-    find('s/mathematics')
+    tap(find('Open Professional English community'))
+    find('s/professional-english')
     find('Joined')
     screenshot('community')
     adb('shell', 'input', 'keyevent', 'KEYCODE_BACK')
@@ -115,15 +137,15 @@ try:
     screenshot('alternate-theme')
     tap(find(second_theme))
     tap(find('Search discussions'))
-    adb('shell', 'input', 'text', 'recursion')
-    find('Read Why does recursion need a base case?')
+    adb('shell', 'input', 'text', 'digital')
+    find('Read Unit 1: Living in a digital age')
     screenshot('search')
     adb('shell', 'input', 'keyevent', 'KEYCODE_BACK')
     tap(find('Home feed'))
-    bookmark = find('Save I understand slopes.', scroll=True, alternatives=('Unsave I understand slopes.',))
+    bookmark = find('Save Unit 1: Living in a digital age', scroll=True, alternatives=('Unsave Unit 1: Living in a digital age',))
     if bookmark.attrib.get('content-desc', '').startswith('Save '):
         tap(bookmark)
-    tap(find('Read I understand slopes.', scroll=True))
+    tap(find('Read Unit 1: Living in a digital age', scroll=True))
     find('Fictional learner')
     screenshot('question')
     find('Follow the conversation', scroll=True)
@@ -132,13 +154,13 @@ try:
     tap(find('Collapse reply by Maya'))
     find('Reply collapsed')
     tap(find('Expand reply by Maya'))
-    find('dividing by zero', scroll=True, visible=False)
-    find('instantaneous speed', scroll=True, visible=False)
-    screenshot('nested-math-reply')
+    find('Access', scroll=True, visible=False)
+    find('search', scroll=True, visible=False)
+    screenshot('nested-english-reply')
     adb('shell', 'am', 'force-stop', 'app.studyit.reader')
     adb('shell', 'am', 'start', '-n', 'app.studyit.reader/.MainActivity')
     tap(find('Saved discussions'))
-    find('I understand slopes.')
+    find('Unit 1: Living in a digital age')
     find('Library checked', scroll=True)
     screenshot('saved-after-restart')
     if not PHYSICAL:
@@ -147,17 +169,22 @@ try:
         adb('shell', 'am', 'start', '-n', 'app.studyit.reader/.MainActivity')
         find('Your available discussions are still here.', attempts=15)
         tap(find('Saved discussions'))
-        tap(find('Read I understand slopes.'))
+        tap(find('Read Unit 1: Living in a digital age'))
         find('Fictional learner')
         find('Collapse reply by Maya', scroll=True)
         screenshot('offline-reading')
         adb('shell', 'cmd', 'connectivity', 'airplane-mode', 'disable')
+    adb('shell', 'input', 'keyevent', 'KEYCODE_BACK')
+    tap(find('Saved discussions'))
+    tap(find('Check for app updates', scroll=True))
+    find('Your app is up to date.', scroll=True)
+    screenshot('app-update-check')
     logs = app_logs()
     with open(OUT + '/logcat.txt', 'w', encoding='utf-8') as file:
         file.write(logs)
     assert 'FATAL EXCEPTION' not in logs, 'Android process crashed'
     assert 'JavascriptException' not in logs, 'JavaScript runtime crashed'
-    print('Android smoke passed: launch, community drawer, community navigation, hardware back, both themes, thread, branch collapse, nested math replies, bookmark, persisted saved collection, shared library refresh' + (', and physical device verification.' if PHYSICAL else ', and offline reading.'))
+    print('Android smoke passed: launch, community drawer, community navigation, hardware back, both themes, thread, branch collapse, nested English replies, bookmark, persisted saved collection, shared library refresh' + (', and physical device verification.' if PHYSICAL else ', and offline reading.'))
 except Exception:
     screenshot('failure')
     with open(OUT + '/logcat.txt', 'w', encoding='utf-8') as file:

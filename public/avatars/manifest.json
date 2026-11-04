@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "seed": "learner:Jamie",
+    "name": "Jamie",
+    "file": "avatar-8fc73416.svg"
+  },
+  {
+    "seed": "persona:maya:Maya",
+    "name": "Maya · AI persona",
+    "file": "avatar-ecb10893.svg"
+  },
+  {
+    "seed": "persona:leo:Leo",
+    "name": "Leo · AI persona",
+    "file": "avatar-b50f821f.svg"
+  },
+  {
+    "seed": "persona:iris:Iris",
+    "name": "Iris · AI persona",
+    "file": "avatar-0966c9c1.svg"
+  }
+]

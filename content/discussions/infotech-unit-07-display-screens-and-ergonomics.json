@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "infotech-unit-07-display-screens-and-ergonomics",
+  "subjectId": "professional-english",
+  "title": "Unit 7: Display screens and ergonomics",
+  "tags": [
+    "infotech",
+    "unit-7",
+    "displays",
+    "instructions",
+    "advice"
+  ],
+  "difficulty": "Beginner",
+  "publishedAt": "2026-11-04T17:03:00Z",
+  "updatedAt": "2026-11-04T17:03:00Z",
+  "question": {
+    "learnerName": "Jamie",
+    "body": "I know words such as screen and monitor, but I confuse resolution with screen size. I also need to write advice: when should I use adjust, should adjust or must adjust?",
+    "priorKnowledge": "Can describe device functions and use simple comparison language.",
+    "interests": "Writing clear instructions for a comfortable study workstation."
+  },
+  "personas": [
+    {
+      "id": "maya",
+      "name": "Maya",
+      "role": "Explainer: clear vocabulary and language patterns"
+    },
+    {
+      "id": "leo",
+      "name": "Leo",
+      "role": "Careful skeptic: tests assumptions and asks challenges"
+    },
+    {
+      "id": "iris",
+      "name": "Iris",
+      "role": "Connection maker: examples and communication practice"
+    }
+  ],
+  "replies": [
+    {
+      "id": "infotech-unit-07-r1",
+      "parentId": null,
+      "personaId": "maya",
+      "body": "**Unit focus: displays, instructions and advice.** **Screen size** usually describes the diagonal measurement. **Resolution** describes the pixel dimensions, such as 1920 × 1080. **Brightness** concerns light output; **refresh rate** concerns how often the display updates. These describe different properties. A larger physical screen does not automatically have more pixels.",
+      "sourceIds": [
+        "book"
+      ]
+    },
+    {
+      "id": "infotech-unit-07-r2",
+      "parentId": null,
+      "personaId": "iris",
+      "body": "Compare three language choices:\n\n- **Adjust the screen position.** An imperative gives an instruction.\n- **You should adjust the screen position.** Should gives advice.\n- **You must follow the lab rules.** Must expresses an obligation in this example.\n\nAfter should and must, use the base verb: **should adjust**, not should to adjust. A negative instruction uses **do not/don't + verb**.",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-07-r3",
+      "parentId": "infotech-unit-07-r2",
+      "personaId": "leo",
+      "body": "If I write You must place every monitor at exactly the same height, is that a good general rule? What if people have different desks, chairs or visual needs?",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-07-r4",
+      "parentId": "infotech-unit-07-r3",
+      "personaId": "maya",
+      "body": "Avoid turning general guidance into one rigid setup for everyone. OSHA advises considering the monitor together with the desk, chair and keyboard; its general guidance places the top line of the screen at or below eye level. Express this as guidance and allow for individual needs. A useful sentence is: **Adjust the monitor so you can read comfortably without an awkward head position.**",
+      "sourceIds": [
+        "monitor"
+      ]
+    },
+    {
+      "id": "infotech-unit-07-r5",
+      "parentId": null,
+      "personaId": "iris",
+      "body": "**Practice:**\n\n1. Correct: You should to reduce glare.\n2. Make a negative instruction: Put the screen where reflections obscure the text.\n3. Does 24 inches describe resolution or physical size?\n4. Does 1920 × 1080 describe a diagonal measurement?\n\n**Answers:** 1. You **should reduce** glare. 2. **Do not put** the screen where reflections obscure the text. 3. Physical size. 4. No; it describes pixel dimensions.",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-07-r6",
+      "parentId": "infotech-unit-07-r5",
+      "personaId": "maya",
+      "body": "**Guidelines writing task:** write four short sentences for a fictional classroom. Include two imperatives and two sentences with should. Example language: **Adjust the display position. Check for reflections. You should choose readable text settings. You should consider the screen together with the rest of the workstation.**\n\n**Takeaway:** name the display property precisely, then choose whether your sentence gives an instruction, advice or an obligation.",
+      "sourceIds": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "book",
+      "title": "Cambridge University Press: Infotech Fourth Edition, map of the book",
+      "url": "https://assets.cambridge.org/97805217/02997/frontmatter/9780521702997_frontmatter.pdf"
+    },
+    {
+      "id": "monitor",
+      "title": "OSHA: Computer workstation monitors",
+      "url": "https://www.osha.gov/etools/computer-workstations/components/monitors"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "infotech-unit-12-flash-memory",
+  "subjectId": "professional-english",
+  "title": "Unit 12: Flash memory",
+  "tags": [
+    "infotech",
+    "unit-12",
+    "flash-memory",
+    "word-building",
+    "media-formats"
+  ],
+  "difficulty": "Beginner",
+  "publishedAt": "2026-11-04T17:03:00Z",
+  "updatedAt": "2026-11-04T17:03:00Z",
+  "question": {
+    "learnerName": "Jamie",
+    "body": "Is flash memory the same as RAM because both use chips? I also confuse a USB flash drive with USB itself and think MP4 must mean a better MP3. How can I explain these differences in a short message?",
+    "priorKnowledge": "Can distinguish magnetic, optical and solid-state storage in broad terms.",
+    "interests": "Moving a fictional music and video collection between devices."
+  },
+  "personas": [
+    {
+      "id": "maya",
+      "name": "Maya",
+      "role": "Explainer: clear vocabulary and language patterns"
+    },
+    {
+      "id": "leo",
+      "name": "Leo",
+      "role": "Careful skeptic: tests assumptions and asks challenges"
+    },
+    {
+      "id": "iris",
+      "name": "Iris",
+      "role": "Connection maker: examples and communication practice"
+    }
+  ],
+  "replies": [
+    {
+      "id": "infotech-unit-12-r1",
+      "parentId": null,
+      "personaId": "maya",
+      "body": "**Unit focus: flash-memory devices and word building.** Flash stores data electronically in non-volatile memory: it retains information without continuous power. It appears in devices such as USB flash drives, memory cards and many SSDs. Ordinary system RAM serves a different role and is volatile. Both using chips does not make them the same technology or function.",
+      "sourceIds": [
+        "book",
+        "flash"
+      ]
+    },
+    {
+      "id": "infotech-unit-12-r2",
+      "parentId": "infotech-unit-12-r1",
+      "personaId": "leo",
+      "body": "If a USB flash drive and an SSD both use flash, must they transfer files at the same speed? And does a larger capacity always mean faster storage?",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-12-r3",
+      "parentId": "infotech-unit-12-r2",
+      "personaId": "maya",
+      "body": "No. **Capacity** tells you how much data fits; **transfer rate** tells you how quickly data moves. A flash chip, its controller, the connection and the workload can affect performance. **USB** names an interface family; a **USB flash drive** is a storage device that uses a USB connection. Do not infer identical performance from a shared storage technology.",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-12-r4",
+      "parentId": null,
+      "personaId": "iris",
+      "body": "Build vocabulary in families: **store → storage**, **erase → erasable**, and **write → writable/rewritable**. Prefix **re-** often means again; suffix **-able** commonly forms an adjective describing a possibility. **Non-volatile** means not volatile in this storage context. Check spelling as well as meaning: write becomes writable, without the final e.",
+      "sourceIds": [
+        "words"
+      ]
+    },
+    {
+      "id": "infotech-unit-12-r5",
+      "parentId": null,
+      "personaId": "leo",
+      "body": "**Challenge:** correct these statements before checking the answer.\n\n1. Non-volatile means the device never fails.\n2. A 128 GB drive must transfer files faster than a 64 GB drive.\n3. MP4 is simply a higher-quality version of MP3.\n4. Rewritable means a medium can only be read.\n\nThen write one sentence distinguishing a storage device from a file format.",
+      "sourceIds": []
+    },
+    {
+      "id": "infotech-unit-12-r6",
+      "parentId": "infotech-unit-12-r5",
+      "personaId": "maya",
+      "body": "**Answers:** 1. Non-volatile means data persists without continuous power; it does not promise immunity to failure. 2. Capacity alone does not establish speed. 3. MP3 is an audio coding format; MP4 is a multimedia container format that can hold audio and video, among other data. A higher number does not guarantee higher quality, and an MP4 need not contain video. 4. Rewritable means it can be written again.\n\n**Message model:** A flash drive is the device carrying the files. MP3 is an audio format; MP4 is a container that can carry audio or video. Check which formats the receiving device supports.\n\n**Takeaway:** keep storage technology, connection, capacity, speed and file format separate.",
+      "sourceIds": [
+        "media"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "book",
+      "title": "Cambridge University Press: Infotech Fourth Edition, map of the book",
+      "url": "https://assets.cambridge.org/97805217/02997/frontmatter/9780521702997_frontmatter.pdf"
+    },
+    {
+      "id": "flash",
+      "title": "IBM: Flash storage",
+      "url": "https://www.ibm.com/think/topics/flash-storage/jcr%3Acontent"
+    },
+    {
+      "id": "words",
+      "title": "Cambridge Dictionary: Word formation",
+      "url": "https://dictionary.cambridge.org/us/grammar/british-grammar/word-formation_2"
+    },
+    {
+      "id": "media",
+      "title": "MDN: Media container formats",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Containers"
+    }
+  ]
+}

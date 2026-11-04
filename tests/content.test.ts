@@ -4,8 +4,8 @@ import { readFileSync } from 'node:fs';
 import { discussionSchema, parseUpload, selectDiscussions, type Subject } from '../src/content';
 import { publishingFiles, repositoryUrl } from '../src/publishing';
 import { renderMarkdown } from '../src/render-markdown';
-const example = JSON.parse(readFileSync('content/discussions/derivatives-as-speed.json', 'utf8'));
-const subjects: Subject[] = JSON.parse(readFileSync('content/subjects.json', 'utf8'));
+const example = JSON.parse(readFileSync('tests/fixtures/derivatives-as-speed.json', 'utf8'));
+const subjects: Subject[] = JSON.parse(readFileSync('tests/fixtures/subjects.json', 'utf8'));
 const upload = () => ({ schemaVersion: 1, discussion: structuredClone(example) });
 test('complete sample validates and retains nested replies', () => {
   const parsed = parseUpload(JSON.stringify(upload()), subjects);
@@ -45,7 +45,7 @@ test('new subject upload prepares both files and existing subject updates preser
   assert.throws(() => parseUpload(JSON.stringify({ ...upload(), subject: { ...subjects[0], name: 'Renamed' } }), subjects), /different definition/);
 });
 test('search includes reply bodies and learner context, filters subjects, and sorts newest first', () => {
-  const other = JSON.parse(readFileSync('content/discussions/orbits-and-falling.json', 'utf8'));
+  const other = JSON.parse(readFileSync('tests/fixtures/orbits-and-falling.json', 'utf8'));
   assert.equal(selectDiscussions([example, other], 'speedometer', null)[0].id, example.id);
   assert.equal(selectDiscussions([example], 'algebra', null).length, 1);
   assert.equal(selectDiscussions([example], 'Mathematics', null, subjects).length, 1);

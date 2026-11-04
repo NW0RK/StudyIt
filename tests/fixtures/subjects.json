@@ -1,0 +1,5 @@
+[
+  {"id":"mathematics","name":"Mathematics","description":"Patterns, proofs, and the beautiful logic behind everyday things.","color":"#8257c5","icon":"calculator-outline"},
+  {"id":"programming","name":"Programming","description":"Understand how code works, one good question at a time.","color":"#277caa","icon":"code-slash-outline"},
+  {"id":"physics","name":"Physics","description":"Big questions about the universe. Small steps toward understanding.","color":"#bd7935","icon":"planet-outline"}
+]
